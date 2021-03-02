@@ -8,18 +8,12 @@ font{color:#ff8888;}
 include("euler_fn.php");
 //gmp_
 //bc_
-//for($i=1;$i<10;$i++){}
-pe037();
+//for($=1;$<10;$++){}
+pe038();
 
 //////////////
 
-function pe037(){ // R:            
-
-}
-function pe038(){ // R:            
-
-}
-function pe039(){ // R:            
+function pe039(){ // R:              
 
 }
 
@@ -877,6 +871,185 @@ echo " (P)";
 }
 }
 echo "R:$s";
+}
+function pe037(){ // R:          748 317
+
+$s=0;
+
+$ar=array(1,2,3,5,7,9);
+$cnt=0;
+$s=0;
+for($a=0;$a<6;$a++){ // Two Ciphers
+for($b=0;$b<6;$b++){
+	$n=$ar[$a].$ar[$b];
+	if(gmp_prob_prime($n)){
+	// echo "$n \n";
+	$n1=$ar[$a];
+	$n2=$ar[$b];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	echo "$n _ $n1 $n2 \n";
+	$cnt++;
+	$s+=$n;
+	}
+	}
+}
+}echo "R:$cnt (2c) \n\n";
+$ar=array(1,3,7,9);
+for($a=0;$a<4;$a++){ // Three Ciphers
+for($b=0;$b<4;$b++){
+for($c=0;$c<4;$c++){
+	$n=$ar[$a].$ar[$b].$ar[$c];
+	if(gmp_prob_prime($n)){
+	// echo "$n \n";
+	$n1=$ar[$b].$ar[$c];
+	$n2=$ar[$a].$ar[$b];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ $n1 $n2 \n";
+	$n1=$ar[$c];
+	$n2=$ar[$a];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	echo "$n _ _ $n1 $n2 \n";
+	$cnt++;
+	$s+=$n;
+	}
+	}
+	}
+}
+}
+}echo "R:$cnt (3c) \n\n";
+for($a=0;$a<4;$a++){ // Four Ciphers
+for($b=0;$b<4;$b++){
+for($c=0;$c<4;$c++){
+for($d=0;$d<4;$d++){
+	$n=$ar[$a].$ar[$b].$ar[$c].$ar[$d];
+	if(gmp_prob_prime($n)){
+	// echo "$n \n";
+	$n1=$ar[$b].$ar[$c].$ar[$d];
+	$n2=$ar[$a].$ar[$b].$ar[$c];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ $n1 $n2 \n";
+	$n1=$ar[$c].$ar[$d];
+	$n2=$ar[$a].$ar[$b];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ $n1 $n2 \n";
+	$n1=$ar[$d];
+	$n2=$ar[$a];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	echo "$n _ _ _ $n1 $n2 \n";
+	$cnt++;
+	$s+=$n;
+	}
+	}
+	}
+	}
+}
+}
+}
+}echo "R:$cnt (4c) \n\n";
+for($a=0;$a<4;$a++){ // Five Ciphers
+for($b=0;$b<4;$b++){
+for($c=0;$c<4;$c++){
+for($d=0;$d<4;$d++){
+for($e=0;$e<4;$e++){
+	$n=$ar[$a].$ar[$b].$ar[$c].$ar[$d].$ar[$e];
+	if(gmp_prob_prime($n)){
+	// echo "$n \n";
+	$n1=$ar[$b].$ar[$c].$ar[$d].$ar[$e];
+	$n2=$ar[$a].$ar[$b].$ar[$c].$ar[$d];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ $n1 $n2 \n";
+	$n1=$ar[$c].$ar[$d].$ar[$e];
+	$n2=$ar[$a].$ar[$b].$ar[$c];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ $n1 $n2 \n";
+	$n1=$ar[$d].$ar[$e];
+	$n2=$ar[$a].$ar[$b];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ _ $n1 $n2 \n";
+	$n1=$ar[$e];
+	$n2=$ar[$a];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	echo "$n _ _ _ _ $n1 $n2 \n";
+	$cnt++;
+	$s+=$n;
+	}
+	}
+	}
+	}
+	}
+}
+}
+}
+}
+}echo "R:$cnt (5c) \n\n";
+for($a=0;$a<4;$a++){ // Six Ciphers
+for($b=0;$b<4;$b++){
+for($c=0;$c<4;$c++){
+for($d=0;$d<4;$d++){
+for($e=0;$e<4;$e++){
+for($f=0;$f<4;$f++){
+	$n=$ar[$a].$ar[$b].$ar[$c].$ar[$d].$ar[$e].$ar[$f];
+	if(gmp_prob_prime($n)){
+	// echo "$n \n";
+	$n1=$ar[$b].$ar[$c].$ar[$d].$ar[$e].$ar[$f];
+	$n2=$ar[$a].$ar[$b].$ar[$c].$ar[$d].$ar[$e];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ $n1 $n2 \n";
+	$n1=$ar[$c].$ar[$d].$ar[$e].$ar[$f];
+	$n2=$ar[$a].$ar[$b].$ar[$c].$ar[$d];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ $n1 $n2 \n";
+	$n1=$ar[$d].$ar[$e].$ar[$f];
+	$n2=$ar[$a].$ar[$b].$ar[$c];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ _ $n1 $n2 \n";
+	$n1=$ar[$e].$ar[$f];
+	$n2=$ar[$a].$ar[$b];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	// echo " _ _ _ _ $n1 $n2 \n";
+	$n1=$ar[$f];
+	$n2=$ar[$a];
+	if(gmp_prob_prime($n1) && gmp_prob_prime($n2)){
+	echo "$n _ _ _ _ _ $n1 $n2 \n";
+	$cnt++;
+	$s+=$n;
+	}
+	}
+	}
+	}
+	}
+	}
+}
+}
+}
+}
+}
+}
+
+echo "R:$cnt & $s (6c) \n\n";
+
+}
+function pe038(){ // R:      932 718 654
+
+$mx=0;
+for($i=1;$i<10000;$i++){
+$cd="";
+for($j=1;$j<100;$j++){
+$cd.=$i*$j;
+if(strlen($cd)>9){break;}
+if(strlen($cd)==9){
+$ar=fnPasarAr($cd);sort($ar,SORT_REGULAR);
+if($ar[0].$ar[1].$ar[2].$ar[3].$ar[4].$ar[5].$ar[6].$ar[7].$ar[8]=="123456789"){
+$mx=$cd;
+echo "$cd\n";
+}
+break;
+}
+}
+}
+
+echo "R:$mx";
+
 }
 
 ?>
