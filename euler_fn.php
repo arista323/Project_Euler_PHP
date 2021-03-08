@@ -5,6 +5,16 @@ foreach($ar as $v){echo str_pad($v,3," ",STR_PAD_LEFT)." ";}
 echo "\n";
 }
 
+function fnCntFact($n){
+$cnt=0;
+$l=sqrt($n)+1;
+                      if($n%2 ==0){$n/=2;$cnt++;}
+                      if($n%2 ==0){$n/=2;}
+for($i=3;$i<$l;$i+=2){if($n%$i==0){$n/=$i;$cnt++;}}
+for($i=3;$i<$l;$i+=2){if($n%$i==0){$n/=$i;}}
+if(gmp_prob_prime($n)){$cnt++;}
+return($cnt);
+}
 function fnCollatz($n){
 $r=0;
 $a=$b=0;
@@ -131,6 +141,18 @@ if($a!=$b){return(0);}
 }
 return(1);
 }
+function fnIsTriNum($x){
+$rt=(1+sqrt(1+8*$x))/2;
+return((int)$rt==$rt?1:0);
+}
+function fnIsPentaNum($x){
+$rt=(1+sqrt(1+24*$x))/6;
+return((int)$rt==$rt?1:0);
+}
+function fnIsHexaNum($x){
+$rt=(1+sqrt(1+8*$x))/4;
+return((int)$rt==$rt?1:0);
+}
 
 function fnMCD($a,$b){
 while($b!=0){
@@ -184,7 +206,18 @@ if($n==   1){$r.="one";         $n-=   1;}
 }
 return($r);
 }
+function fnOrdDigit($n){
+$n.="";
+$ar=array();
+$l=strlen($n);
+for($i=0;$i<$l;$i++){
+$ar[$i]=$n[$i];
+}
+sort($ar);
+return($ar);
+}
 function fnPasarAr($tx){
+$tx.="";
 $ar=array();
 $l=strlen($tx);
 for($i=0;$i<$l;$i++){
@@ -194,6 +227,26 @@ return($ar);
 }
 function fnPermutacion($n,$r){
 return(fnFactorial($n)/fnFactorial($n-$r));
+}
+function fnPermutInt1($str,$act,$fin,$ar){
+if($act>=$fin){$ar[]=$str;/* echo "$str\n"; */return;}
+for($i=1;$i<=$fin;$i++){
+// $v=($fin-$i+1)."";
+$v=$i."";
+if(!is_numeric(strpos($str,$v))){
+fnPermutInt1($str.$v,$act+1,$fin,&$ar);
+}
+}
+}
+function fnPermutInt0($str,$act,$fin,$ar){
+if($act>=$fin){$ar[]=$str;/* echo "$str\n"; */return;}
+for($i=0;$i<$fin;$i++){
+// $v=($fin-$i+1)."";
+$v=$i."";
+if(!is_numeric(strpos($str,$v))){
+fnPermutInt0($str.$v,$act+1,$fin,&$ar);
+}
+}
 }
 function fnPeriod($a,$b){
 
@@ -294,5 +347,8 @@ function fnTriNumber($n){ // Triangular Number
 $n=(int)$n;
 return(($n*$n+$n)/2);
 }
+function fnTriNum($n){return(($n*$n+$n)/2);}
+function fnPentaNum($n){return((3*$n*$n-$n)/2);}
+function fnHexaNum($n){return((2*$n*$n-$n));}
 
 ?>

@@ -8,12 +8,41 @@ font{color:#ff8888;}
 include("euler_fn.php");
 //gmp_
 //bc_
-//for($=1;$<10;$++){}
-pe038();
+//for($a=0;$a<10;$a+=1){}
+
+$prob=$_GET['p'];
+eval("pe".str_pad($prob,3,"0",STR_PAD_LEFT)."();");
 
 //////////////
 
-function pe039(){ // R:              
+function pe050(){ // R:              
+
+}
+function pe051(){ // R:              
+
+}
+function pe052(){ // R:              
+
+}
+function pe053(){ // R:              
+
+}
+function pe054(){ // R:              
+
+}
+function pe055(){ // R:              
+
+}
+function pe056(){ // R:              
+
+}
+function pe057(){ // R:              
+
+}
+function pe058(){ // R:              
+
+}
+function pe059(){ // R:              
 
 }
 
@@ -1049,6 +1078,342 @@ break;
 }
 
 echo "R:$mx";
+
+}
+function pe039(){ // R:              840
+
+for($gl=2;$gl<=1000;$gl+=2){
+$cn=0;
+for($a=1 ;$a<$gl/2;$a+=1){
+for($b=$a;$b<$gl/2;$b+=1){
+if($a+$b+$h>$gl){break;}
+$h=sqrt($a*$a+$b*$b);
+if($a+$b+$h==$gl){
+$cn++;
+echo "<font>$gl</font> $a,$b,$h \n";
+}
+}
+}
+if($cn>$mx){
+$mx=$cn;
+$glM=$gl;
+}
+flush();
+}
+
+echo "\n\nR:$glM";
+
+}
+function pe040(){ // R:              210
+$cd="0";
+for($i=1;$i<1000000/5;$i++){
+$cd.=$i;
+}
+echo "l:".strlen($cd)."\n";
+echo "R:".($cd[1]*$cd[10]*$cd[100]*$cd[1000]*$cd[10000]*$cd[100000]*$cd[1000000]);
+}
+function pe041(){ // R:        7 652 413
+
+$ar=array();
+fnPermutInt1("7",0,6,&$ar);
+$mx=0;
+foreach($ar as $v){
+if(gmp_prob_prime($v)){
+if($v>$mx){// echo "$v\n";
+$mx=$v;
+}
+}
+}
+echo "R:$mx";
+}
+function pe042(){ // R:              162
+
+$f=fopen("c:\\euler\\p042_words.txt","r");
+$s2=0;
+$ln=fgets($f);
+$nms=explode(",",$ln); // array names
+$c=0;
+foreach($nms as $nm){
+$l=strlen($nm);$nm=substr($nm,1,$l-2);$l=strlen($nm);
+$v=0;
+for($i=0;$i<$l;$i++){$v+=ord($nm[$i])-64;}
+$n=-1/2+sqrt(1+8*$v)/2;
+if($n==(int)$n){echo "$nm ($v) T:$n \n";$c++;}
+}
+echo "R:$c";
+}
+function pe043(){ // R:   16 695 334 890
+
+$ar234=array();
+for($a=1;$a<10;$a++){
+for($b=0;$b<10;$b++){
+for($c=0;$c<10;$c++){
+for($d=0;$d<10;$d++){
+$d234="$a$b$c$d";
+if($d234%2==0){$ar234[]=$d234;}
+}}}}
+// echo "2:";print_r($ar234);
+
+$ar345=array();
+foreach($ar234 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,2,2).$a;
+if($v2%3==0){
+$ar345[]=$v.$a;
+}
+}
+}
+// echo "3:";print_r($ar345);
+
+$ar456=array();
+foreach($ar345 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,3,2).$a;
+if($v2%5==0){
+$ar456[]=$v.$a;
+}
+}
+}
+// echo "5:";print_r($ar456);
+
+$ar567=array();
+foreach($ar456 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,4,2).$a;
+if($v2%7==0){
+$ar567[]=$v.$a;
+}
+}
+}
+// echo "7:";print_r($ar567);
+
+$ar678=array();
+foreach($ar567 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,5,2).$a;
+if($v2%11==0){
+$ar678[]=$v.$a;
+}
+}
+}
+// echo "11:";print_r($ar678);
+
+$ar789=array();
+foreach($ar678 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,6,2).$a;
+if($v2%13==0){
+$ar789[]=$v.$a;
+}
+}
+}
+// echo "13:";print_r($ar789);
+
+$ar890=array();
+foreach($ar789 as $v){
+for($a=0;$a<10;$a++){
+$v2=substr($v,7,2).$a;
+if($v2%17==0){
+$ar890[]=$v.$a;
+}
+}
+}
+// echo "17:";print_r($ar890);
+
+foreach($ar890 as $v){
+	$ar=fnPasarAr($v);
+	sort($ar,SORT_REGULAR);
+	if($ar[0].$ar[1].$ar[2].$ar[3].$ar[4].$ar[5].$ar[6].$ar[7].$ar[8]=="012345678"){
+	$ar2[]=$v;
+	echo "<font>$v</font>\n";
+	}
+}
+
+$s=array_sum($ar2);
+
+echo "R:$s";
+
+/*
+
+1406357289 
+1430952867 
+1460357289 
+4106357289 
+4130952867 
+4160357289 
+
+R:16695334890
+
+*/
+
+
+
+
+
+
+// $ar=array();
+// fnPermutInt0("",0,10,&$ar);
+// $s=0;
+// foreach($ar as $v){
+// $d7=substr($v,7,3);if($d7%17==0){
+// $d6=substr($v,6,3);if($d6%13==0){
+// $d5=substr($v,5,3);if($d5%11==0){
+// $d4=substr($v,4,3);if($d4%7==0){
+// $d3=substr($v,3,3);if($d3%5==0){
+// $d2=substr($v,2,3);if($d2%3==0){
+// $d1=substr($v,1,3);if($d1%2==0){
+// echo "$v \n";
+// $s+=$v;
+// flush();
+// }
+// }
+// }
+// }
+// }
+// }
+// }
+// }
+// echo "R:$s";
+
+}
+function pe044(){ // R:        5 482 660
+
+$arPen=array();
+for($a=1;$a<4000;$a++){
+$arPen[$a]=$a*(3*$a-1)/2;
+}
+$aa=$bb=$ss=$rr=0;
+for($a=1   ;$a<2000   ;$a++){$aa=$arPen[$a];
+for($b=$a  ;$b<4000   ;$b++){$bb=$arPen[$b];$ss=$aa+$bb;
+if(fnIsPentaNum($ss)){// echo "s:$ss\n";
+$rr=abs($aa-$bb);
+if(fnIsPentaNum($rr)){echo "($a,$b) | ($aa,$bb) | s:$ss <font>r:$rr</font>\n";
+}}
+}}
+
+}
+function pe045(){ // R:    1 533 776 805
+
+for($a=285+1;;$a+=1){
+$n=fnTriNum($a);
+if(fnIsPentaNum($n)){
+echo "f($a)=$n ";
+echo "(Penta) ";
+echo "\n";
+if(fnIsHexaNum($n)){
+echo "f($a)=$n ";
+echo "(<font>Hexa</font>) ";
+echo "\n";
+break;
+}
+}
+}
+
+}
+function pe046(){ // R:            5 777
+
+for($a=5501;$a<10000;$a+=2){if(!gmp_prob_prime($a)){$bnd=0;
+for($b=3;$b<$a  ;$b+=2){if( gmp_prob_prime($b)){
+for($c=1;$c<$a  ;$c++ ){
+if($a==$b+2*$c*$c){
+echo "$a=$b+2*$c^2 \n";
+$bnd=1;
+break(2);
+}
+}
+}
+}
+if(!$bnd){echo "<font>$a</font>";break;}
+}
+flush();
+}
+
+}
+function pe047(){ // R:          134 043
+$ant=0;$cns=0;$ar=array();
+for($a=1;$a<1100000;$a+=1){
+if(!gmp_prob_prime($a)){//echo "$a ";
+if($a-$ant==1){//consecutivo
+// echo "$a ";
+$cns+=1;
+if($cns>=4){
+// echo "$a (c)";
+$ar[]=$a;
+}
+}
+else{
+// echo "\n";
+$cns=0;
+}
+$ant=$a;
+}
+
+}
+
+// print_r($ar);
+
+//Find the 
+//first four consecutive integers 
+//to have 
+//four distinct prime factors each. 
+//
+//What is the first of these numbers?
+// foreach($ar as $v){
+$ant=$cnt2=0;
+for($a=134040;$a<160000;$a+=1){
+$v=$a;
+$cnt=fnCntFact($v);
+if($cnt==4){
+if($a-$ant==1){
+$cnt2++;
+if($cnt2>=3){
+echo ($v-3)."=".($cnt>=4?"<font>$cnt</font>":" ");
+echo " C<font>($cnt2)</font>";
+echo "\n";
+}
+flush();
+}
+$ant=$a;
+}
+else{
+$cnt2=0;
+}
+}
+
+}
+function pe048(){ // R:    9 110 846 700
+$s=0;
+// for($a=1;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=2;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=3;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=4;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=5;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=6;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=7;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=8;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+// for($a=9;$a<1000;$a+=10){$s=bcadd($s,bcpow($a,$a));}
+for($a=1;$a<1000;$a+=1){if($a%10==0)continue;$s=bcadd($s,bcpow($a,$a));}
+$l=strlen($s);
+echo substr($s,$l-10);
+}
+function pe049(){ // R:   2969 6299 9629
+
+for($i=1487;$i<10000;$i+=2){
+if(gmp_prob_prime($i)){
+for($j=111;$j<10000;$j+=111){
+$t1=$i+$j*1;
+$t2=$i+$j*2;
+if($t2>10000){break;}
+if(gmp_prob_prime($t1) && gmp_prob_prime($t2)){
+if(fnOrdDigit($i)==fnOrdDigit($t1) && fnOrdDigit($t1)==fnOrdDigit($t2)){
+echo "i:$i ($t1,$t2)";
+echo " $j ";
+echo "\n";
+}
+}
+}
+}
+}
 
 }
 
