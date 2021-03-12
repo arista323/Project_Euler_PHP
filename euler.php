@@ -2,50 +2,513 @@
 <style>
 body{color:#ffffff;background:#000000;}
 font{color:#ff8888;}
+cRedHrt:after{content:'\2661';}
+cRedDmn:after{content:'\2662';}
+cBlcClb:after{content:'\2663';}
+cBlcSpd:after{content:'\2664';}
+cRedHrt{background:#440000;border:none;border-radius:20%;color:#aa2222;font-size:20px;display:inline-block;height:30px;width:30px;}
+cRedDmn{background:#440000;border:none;border-radius:20%;color:#aa2222;font-size:20px;display:inline-block;height:30px;width:30px;}
+cBlcClb{background:#000000;border:none;border-radius:20%;color:#cccccc;font-size:20px;display:inline-block;height:30px;width:30px;}
+cBlcSpd{background:#000000;border:none;border-radius:20%;color:#cccccc;font-size:20px;display:inline-block;height:30px;width:30px;}
 </style>
-<pre>
+<pre><br>
 <?php
 include("euler_fn.php");
-//gmp_
-//bc_
-//for($a=0;$a<10;$a+=1){}
-
 $prob=$_GET['p'];
 eval("pe".str_pad($prob,3,"0",STR_PAD_LEFT)."();");
 
 //////////////
 
-function pe050(){ // R:              
+//gmp_
+//bc_
+//for($a=0;$a<10;$a+=1){}
 
-}
 function pe051(){ // R:              
 
+{/////////////////////////////
+
+$ar8=array(1,3,7,9);
+for($a1=1;$a1<10;$a1+=1){
+for($a4=0;$a4<10;$a4+=1){
+for($a8=0;$a8<4 ;$a8+=1){
+
+$cnt=0;
+for($d1=0;$d1<10;$d1+=1){
+$n=$a1.$d1.$a4.$d1.$d1.$d1.$d1.$ar8[$a8];
+if(gmp_prob_prime($n)){
+$cnt++;
+if($cnt>=5){
+echo "_d_dddd_\n";
+echo "$n ($cnt)\n";
 }
-function pe052(){ // R:              
+}
+}
+
+$cnt=0;
+for($d1=0;$d1<10;$d1+=1){
+$n=$a1.$d1.$d1.$a4.$d1.$d1.$d1.$ar8[$a8];
+if(gmp_prob_prime($n)){
+$cnt++;
+if($cnt>=5){
+echo "_dd_ddd_\n";
+echo "$n ($cnt)\n";
+}
+}
+}
+
+$cnt=0;
+for($d1=0;$d1<10;$d1+=1){
+$n=$a1.$d1.$d1.$d1.$a4.$d1.$d1.$ar8[$a8];
+if(gmp_prob_prime($n)){
+$cnt++;
+if($cnt>=5){
+echo "_ddd_dd_\n";
+echo "$n ($cnt)\n";
+}
+}
+}
+
+$cnt=0;
+for($d1=0;$d1<10;$d1+=1){
+$n=$a1.$d1.$d1.$d1.$d1.$a4.$d1.$ar8[$a8];
+if(gmp_prob_prime($n)){
+$cnt++;
+if($cnt>=5){
+echo "_dddd_d_\n";
+echo "$n ($cnt)\n";
+}
+}
+}
 
 }
-function pe053(){ // R:              
+}
+}
+}
+
+}
+function pe052(){ // R:          142 857
+
+$ar=array();
+for($a=100000;$a<300000;$a+=1){
+$n1=$a*1;$ar1=fnOrdDigit($n1);
+$n2=$a*2;$ar2=fnOrdDigit($n2);
+$n3=$a*3;$ar3=fnOrdDigit($n3);
+$n4=$a*4;$ar4=fnOrdDigit($n4);
+$n5=$a*5;$ar5=fnOrdDigit($n5);
+$n6=$a*6;$ar6=fnOrdDigit($n6);
+if($ar1==$ar2 && $ar2==$ar3 && $ar3==$ar4 && $ar4==$ar5 && $ar5==$ar6){
+echo "$n1 \n";
+}
+}
+
+}
+function pe053(){ // R:            4 075
+
+echo fnCombinacion(22,11)."\n";
+
+$cnt=0;
+for($n=20;$n<=100 ;$n+=1){
+for($r=4 ;$r<=$n-1;$r+=1){
+$t=fnCombinacion($n,$r);
+if($t>1000000){
+$cnt++;
+}
+}
+}
+echo "R:$cnt";
 
 }
 function pe054(){ // R:              
 
-}
-function pe055(){ // R:              
+$f=fopen("c:\\euler\\p054_poker.txt","r");
+$cnt=0;
+while($cnt++<1 && $ln=fgets($f)){
+echo "$ln \n";
+$pLft=array(0,0,0,0,0   ,0,0,0,0,0   ,0,0,0,0,0);
+$pRgh=array(0,0,0,0,0   ,0,0,0,0,0   ,0,0,0,0,0);
+
+$opts=explode(" ",$ln);
+for($i=0;$i<5;$i++){
+$opt=$opts[$i];
+$nmb=$opt[0];
+$crd=$opt[1];
+$nmb=fnN($nmb);
+$pLft[$nmb]++;
+// echo "$nmb $crd \n";
+// if($crd=='H'){echo "<cRedHrt>$nmb</cRedHrt>";}//♥♦♣♠
+// if($crd=='D'){echo "<cRedDmn>$nmb</cRedDmn>";}//♥♦♣♠
+// if($crd=='S'){echo "<cBlcSpd>$nmb</cBlcSpd>";}//♥♦♣♠
+// if($crd=='C'){echo "<cBlcClb>$nmb</cBlcClb>";}//♥♦♣♠
 
 }
-function pe056(){ // R:              
+for($i=5;$i<10;$i++){
+$opt=$opts[$i];
+$nmb=$opt[0];
+$crd=$opt[1];
+$nmb=fnN($nmb);
+$pRgh[$nmb]++;
+// echo "$nmb $crd \n";
+// if($crd=='H'){echo "<cRedHrt>$nmb</cRedHrt>";}//♥♦♣♠
+// if($crd=='D'){echo "<cRedDmn>$nmb</cRedDmn>";}//♥♦♣♠
+// if($crd=='S'){echo "<cBlcSpd>$nmb</cBlcSpd>";}//♥♦♣♠
+// if($crd=='C'){echo "<cBlcClb>$nmb</cBlcClb>";}//♥♦♣♠
 
 }
-function pe057(){ // R:              
+print_r($pLft);
+print_r($pRgh);
+echo "\n";
+
+if(array_search(4,$pLft)>0){
 
 }
-function pe058(){ // R:              
+
+}
+
+echo "R: $s2";
+
+}
+function pe055(){ // R:              249
+
+$ly=0;
+for($a=10;$a<10000;$a+=1){
+$cnt=0;
+$n=$a;
+while($cnt++<50){
+$n=bcadd($n,strrev($n));
+if(fnIsPalin($n)){
+echo "$a (P,$cnt) \n";
+$cnt=0;
+break;
+}
+}
+if($cnt>50){
+$ly++;
+echo "$a <font>Lychrel ($ly)</font> \n";
+}
+}
+
+echo "R:$ly";
+
+}
+function pe056(){ // R:              972
+
+$mx=0;
+for($a=1;$a<100;$a+=1){
+for($b=1;$b<100;$b+=1){
+$n=fnSumDigits(bcpow($a,$b));
+if($n>$mx){
+echo "$n \n";
+$mx=$n;
+}
+}
+}
+
+}
+function pe057(){ // R:              153
+
+$a[0]=3;$a[1]=7;
+$b[0]=2;$b[1]=5;
+
+$cnt=0;
+
+for($i=2;$i<1000;$i+=1){
+$a[$i]=bcadd(bcmul($a[$i-1],2),$a[$i-2]);
+$b[$i]=bcadd(bcmul($b[$i-1],2),$b[$i-2]);
+
+$la=strlen($a[$i]."");
+$lb=strlen($b[$i]."");
+
+if($la>$lb){
+echo ($a[$i]/$b[$i])." $la>$lb \n";
+$cnt++;
+}
+
+}
+
+echo "R:$cnt";
+
+}
+function pe058(){ // R:           26 241
+
+// $a=4n^2-2n+1; // 3
+// $b=4n^2   +1; // 5
+// $c=4n^2+2n+1; // 7
+// $d=4n^2+4n+1; // 9
+
+$prc=$cnt=0;
+for($n=1;;$n+=1){
+$a=4*$n*$n-2*$n+1; // 3 13 31
+$b=4*$n*$n-0*$n+1; // 5 17 37
+$c=4*$n*$n+2*$n+1; // 7 21 43
+// $d=4*$n*$n+4*$n+1; // 9 25 49
+
+if(gmp_prob_prime($a)){$cnt++;}
+if(gmp_prob_prime($b)){$cnt++;}
+if(gmp_prob_prime($c)){$cnt++;}
+// if(gmp_prob_prime($d)){$cnt++;}
+
+$prc=100.0*$cnt/($n*4);
+if($prc<10){break;}
+echo "$prc % ".($n*2+1)." \n";
+
+}
+
 
 }
 function pe059(){ // R:              
 
+// key a-97 z-122
+
+$f=fopen("c:\\euler\\p059_cipher.txt","r");
+$s2=0;
+$ln=fgets($f);
+$nms=explode(",",$ln); // array names
+
+echo $l=count($nms);
+for($a=97;$a<122;$a+=1){
+for($b=97;$b<122;$b+=1){
+for($c=97;$c<122;$c+=1){
+$str="";
+for($i=0;$i<$l/3;$i+=3){
+
+$str.=chr($nms[$i+0]^$a);
+$str.=chr($nms[$i+1]^$b);
+$str.=chr($nms[$i+2]^$c);
+
+}
+if(strpos(strtolower($str)," from ")){
+echo "($a,$b,$c)\n";
+$dec=$str;
+break(3);
+}
+}
+}
 }
 
+$s=0;
+$l=strlen($dec);
+echo "\nl:$l = $dec\n";
+for($a=0;$a<$l;$a+=1){
+$cr=(substr($dec,$a,1));
+$s+=ord($cr);
+echo "$s \n";
+}
+
+echo "\n\nR:$s";
+
+}
+function pe060(){ // R:              
+
+}
+function pe061(){ // R:              
+
+// $n=          5625; // sqr
+// $n=        8256; // tri
+// $n=      2882; // penta
+// $n=    8128; // hexa
+// $n=  1281; // octa
+// $n=2512; // hepta
+
+$cicl=0;
+$ar=array();
+for($a=45;$a<141;$a+=1){
+$tr=($a*$a+$a)/2;$tr.="";
+echo "Tr: $a $tr \n";
+
+for($b=10;$b<100;$b+=1){
+$sq=str_pad($b,2,"0",STR_PAD_LEFT).substr($tr,0,2);
+if(fnIsSqrNum($sq)){
+echo "  Sq: $b $sq \n";
+
+for($c=10;$c<100;$c+=1){
+$pn=str_pad($c,2,"0",STR_PAD_LEFT).substr($sq,0,2);
+if(fnIsPentaNum($pn)){
+echo "    Pn: $c $pn \n";
+
+for($d=10;$d<100;$d+=1){
+$hx=str_pad($d,2,"0",STR_PAD_LEFT).substr($pn,0,2);
+if(fnIsHexaNum($hx)){
+echo "      Hx: $d $hx \n";
+
+for($e=10;$e<100;$e+=1){
+$hp=str_pad($e,2,"0",STR_PAD_LEFT).substr($hx,0,2);
+if(fnIsHeptaNum($hp)){
+echo "        Hp: $e $hp \n";
+
+for($f=10;$f<100;$f+=1){
+$oc=str_pad($f,2,"0",STR_PAD_LEFT).substr($hp,0,2);
+if(fnIsOctaNum($oc)){
+echo "          Oc: <font>$f $oc </font>\n";
+$cicl+=$tr; // 28684
+if(substr($tr,2,2)==substr($oc,0,2)){
+echo "Fin\n\n";
+// Tr: 127 81 28 
+// Sq: 82  82 81 
+// Pn: 28  28 82 
+// Hx: 81  81 28 
+}
+}
+}
+
+}
+}
+
+}
+}
+
+}
+}
+
+}
+}
+
+// if($tr>9999){break;}
+}
+echo "R:$cicl";
+}
+function pe062(){ // R:              
+
+for($a=4641;$a<10000;$a+=1){
+// 465 (9)
+// 1000 (10)
+$n1=bcpow($a,3)."";
+$ar1=fnPasarAr($n1);sort($ar1);
+echo "a:$a _ $n1 _ ";
+print_ar($ar1);
+echo "<br>\n";
+$cnt=0;
+for($b=$a;$b<10000;$b+=1){if($a==$b)continue;
+$n2=bcpow($b,3)."";
+$ar2=fnPasarAr($n2);sort($ar2);
+
+if($ar1==$ar2){$cnt++;
+if($cnt>=4){
+echo " * b:$b _ $n2 _ ";
+print_ar($ar2);
+echo "<font>$a=$b</font> \n";
+echo "<br>\n";
+break(2);
+}
+}
+}
+}
+
+
+
+}
+function pe063(){ // R:              
+
+
+
+}
+function pe064(){ // R:              
+
+}
+function pe065(){ // R:              
+
+}
+function pe066(){ // R:              
+
+}
+function pe067(){ // R:              
+
+}
+function pe068(){ // R:              
+
+}
+function pe069(){ // R:              
+
+}
+function pe070(){ // R:              
+
+}
+function pe071(){ // R:              
+
+}
+function pe072(){ // R:              
+
+}
+function pe073(){ // R:              
+
+}
+function pe074(){ // R:              
+
+}
+function pe075(){ // R:              
+
+}
+function pe076(){ // R:              
+
+}
+function pe077(){ // R:              
+
+}
+function pe078(){ // R:              
+
+}
+function pe079(){ // R:              
+
+}
+function pe080(){ // R:              
+
+}
+function pe081(){ // R:              
+
+}
+function pe082(){ // R:              
+
+}
+function pe083(){ // R:              
+
+}
+function pe084(){ // R:              
+
+}
+function pe085(){ // R:              
+
+}
+function pe086(){ // R:              
+
+}
+function pe087(){ // R:              
+
+}
+function pe088(){ // R:              
+
+}
+function pe089(){ // R:              
+
+$f=fopen("c:\\euler\\p089_roman.txt","r");
+
+while($ln=fgets($f)){
+$l=strlen($ln);
+$ln=substr($ln,0,$l-1);
+echo "$ln=";
+$l=strlen($ln);
+$sm=0;
+for($a=0;$a<$l;$a+=1){
+$cr=$ln[$a];
+$sm+=fnSwitch($cr,"M",1000
+				,"D",500,"C",100
+				,"L",50,"X",10
+				,"V",5,"I",1);
+}
+$rom=fnDec2Rom($sm);
+echo "$sm=$rom\n";
+
+}
+}
+function fnDec2Rom($n){
+$s="";
+while($n>=1000){$n-=1000;$s.="M";}
+while($n>= 500){$n-= 500;$s.="D";}
+while($n>= 100){$n-= 100;$s.="C";}
+while($n>=  50){$n-=  50;$s.="L";}
+while($n>=  10){$n-=  10;$s.="X";}
+while($n>=   5){$n-=   5;$s.="V";}
+while($n>=   1){$n-=   1;$s.="I";}
+return($s);
+}
    //////////
   // DONE
  //////////
@@ -1414,6 +1877,37 @@ echo "\n";
 }
 }
 }
+
+}
+function pe050(){ // R:          997 651
+
+$ar=array(); // Primes
+for($i=1;$i<4000;$i+=2){ // 50k x 20 =1000k
+if(gmp_prob_prime($i)){
+$ar[]=$i;
+}
+}
+$l=count($ar);
+
+
+$mx=0;
+for($a=100;$a<600;$a+=2){
+for($i=0;$i<$l;$i+=1){
+$n=0;
+for($j=$i;$j<$a;$j+=1){
+$n+=$ar[$i+$j];
+// echo $ar[$i+$j]."|";
+}
+if(gmp_prob_prime($n)){
+echo "($a,$i,$j) n:$n \n";
+flush();
+if($n<1000000 && $n>$mx){$mx=$n;}
+break;
+}
+}
+}
+
+echo "R:<font>$mx</font>";
 
 }
 

@@ -26,7 +26,7 @@ $r++;
 return(array($r,$a,$b));
 }
 function fnCombinacion($n,$r){
-return(fnFactorial($n)/fnFactorial($n-$r)/fnFactorial($r));
+return(bcdiv(bcdiv(fnFactorial($n),fnFactorial($n-$r)),fnFactorial($r)));
 }
 function fnCountPrimes($a,$b){
 $c=0;
@@ -145,12 +145,24 @@ function fnIsTriNum($x){
 $rt=(1+sqrt(1+8*$x))/2;
 return((int)$rt==$rt?1:0);
 }
+function fnIsSqrNum($x){
+$rt=sqrt($x);
+return((int)$rt==$rt?1:0);
+}
 function fnIsPentaNum($x){
 $rt=(1+sqrt(1+24*$x))/6;
 return((int)$rt==$rt?1:0);
 }
 function fnIsHexaNum($x){
 $rt=(1+sqrt(1+8*$x))/4;
+return((int)$rt==$rt?1:0);
+}
+function fnIsHeptaNum($x){
+$rt=(3+sqrt(9+40*$x))/10;
+return((int)$rt==$rt?1:0);
+}
+function fnIsOctaNum($x){
+$rt=(2+sqrt(4+12*$x))/6;
 return((int)$rt==$rt?1:0);
 }
 
@@ -343,12 +355,25 @@ $ar[$pos] =$ar[$xPos];
 $ar[$xPos]=$t;
 return(1);
 }
+function fnSwitch($n,$a,$ar,$b=0,$br=0,$c=0,$cr=0,$d=0,$dr=0,$e=0,$er=0,$f=0,$fr=0,$g=0,$gr=0){
+    if($n==$a){return($ar);}
+elseif($n==$b){return($br);}
+elseif($n==$c){return($cr);}
+elseif($n==$d){return($dr);}
+elseif($n==$e){return($er);}
+elseif($n==$f){return($fr);}
+elseif($n==$g){return($gr);}
+return(0);
+}
 function fnTriNumber($n){ // Triangular Number
 $n=(int)$n;
 return(($n*$n+$n)/2);
 }
 function fnTriNum($n){return(($n*$n+$n)/2);}
+function fnSqrNum($n){return(($n*$n));}
 function fnPentaNum($n){return((3*$n*$n-$n)/2);}
 function fnHexaNum($n){return((2*$n*$n-$n));}
+function fnHeptaNum($n){return((5*$n*$n-3*$n)/2);}
+function fnOctaNum($n){return((3*$n*$n-2*$n));}
 
 ?>
