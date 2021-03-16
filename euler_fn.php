@@ -37,6 +37,23 @@ $c++;
 }
 return($c);
 }
+function fnDec2Rom($n){
+$s="";
+while($n>=1000){$n-=1000;$s.="M";}
+   if($n>= 900){$n-= 900;$s.="CM";}
+while($n>= 500){$n-= 500;$s.="D";}
+   if($n>= 400){$n-= 400;$s.="CD";}
+while($n>= 100){$n-= 100;$s.="C";}
+   if($n>=  90){$n-=  90;$s.="XC";}
+while($n>=  50){$n-=  50;$s.="L";}
+   if($n>=  40){$n-=  40;$s.="XL";}
+while($n>=  10){$n-=  10;$s.="X";}
+   if($n>=   9){$n-=   9;$s.="IX";}
+while($n>=   5){$n-=   5;$s.="V";}
+   if($n>=   4){$n-=   4;$s.="IV";}
+while($n>=   1){$n-=   1;$s.="I";}
+return($s);
+}
 function fnGetFactor1($n){
 $l=sqrt($n)+1;
 for($i=7;$i<$l/2;$i+=6){
@@ -292,6 +309,38 @@ break(2);
 
 // echo "p:$pos *";
 return($pos);
+
+}
+function fnRom2Dec($n){
+
+$l=strlen($n);
+$sm=0;
+for($a=0;$a<$l;$a+=1){
+$cr1=$n[$a+0];
+$cr2=$n[$a+1];
+
+    if($cr1=='M'){$sm+=1000;}
+elseif($cr1=='C'){
+    if($cr2=='M'){$sm+=900;$a++;}
+elseif($cr2=='D'){$sm+=400;$a++;}
+else             {$sm+=100;}
+}
+elseif($cr1=='D'){$sm+=500;}
+elseif($cr1=='X'){
+    if($cr2=='C'){$sm+=90;$a++;}
+elseif($cr2=='L'){$sm+=40;$a++;}
+else             {$sm+=10;}
+}
+elseif($cr1=='L'){$sm+=50;}
+elseif($cr1=='I'){
+    if($cr2=='X'){$sm+=9;$a++;}
+elseif($cr2=='V'){$sm+=4;$a++;}
+else             {$sm+=1;}
+}
+elseif($cr1=='V'){$sm+=5;}
+
+}
+return($sm);
 
 }
 function fnRotate($n,$dir=0){

@@ -476,39 +476,50 @@ function pe087(){ // R:
 function pe088(){ // R:              
 
 }
-function pe089(){ // R:              
+function pe089(){ // R:              743
+
+// $a="MMMMCDXLIV";  echo $a=fnRom2Dec($a);echo fnDec2Rom($a)."\n";
+// $a="MMMMMDLV";    echo $a=fnRom2Dec($a);echo fnDec2Rom($a)."\n";
+// $a="MMMMMMDCLXVI";echo $a=fnRom2Dec($a);echo fnDec2Rom($a)."\n";
+// $a="MMCCXXII";    echo $a=fnRom2Dec($a);echo fnDec2Rom($a)."\n";
 
 $f=fopen("c:\\euler\\p089_roman.txt","r");
+$dif1=0;
 
-while($ln=fgets($f)){
-$l=strlen($ln);
-$ln=substr($ln,0,$l-1);
-echo "$ln=";
-$l=strlen($ln);
-$sm=0;
-for($a=0;$a<$l;$a+=1){
-$cr=$ln[$a];
-$sm+=fnSwitch($cr,"M",1000
-				,"D",500,"C",100
-				,"L",50,"X",10
-				,"V",5,"I",1);
+while($lin0=fgets($f)){
+
+$lin0=substr($lin0,0,strlen($lin0)-1);
+$l1=strlen($lin0);
+$dec=fnRom2Dec($lin0);
+$rom=fnDec2Rom($dec);
+$l2=strlen($rom);
+
+if($l1!=$l2){
+echo "$lin0 $dec ($l1) $rom ($l2)\n";
 }
-$rom=fnDec2Rom($sm);
-echo "$sm=$rom\n";
+$dif1+=$l1-$l2;
+}
+
+echo "R:$dif1 $dif2 ";
+
+/// /// /// /// ///
+
+// $f=fopen("c:\\euler\\p089_roman.txt","r");
+// $dif=0;
+// $ar1=array("DCCCC","CCCC","LXXXX","XXXX","VIIII","IIII");
+// $ar2=array("CM"   ,"CD"  ,"XC"   ,"XL"  ,"IX"   ,"IV");
+
+// while($lin0=fgets($f)){
+// $l1=strlen($lin0);
+// $lin0=str_replace($ar1,$ar2,$lin0);
+// $l2=strlen($lin0);
+// $dif+=$l1-$l2;
+// }
+
+// echo "R:$dif ";
 
 }
-}
-function fnDec2Rom($n){
-$s="";
-while($n>=1000){$n-=1000;$s.="M";}
-while($n>= 500){$n-= 500;$s.="D";}
-while($n>= 100){$n-= 100;$s.="C";}
-while($n>=  50){$n-=  50;$s.="L";}
-while($n>=  10){$n-=  10;$s.="X";}
-while($n>=   5){$n-=   5;$s.="V";}
-while($n>=   1){$n-=   1;$s.="I";}
-return($s);
-}
+
    //////////
   // DONE
  //////////
